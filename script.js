@@ -31,12 +31,39 @@ passengers.forEach(p => {
   titanic.appendChild(p)
 })
 
+// Sort Data
+data.sort((a, b) => {
+  if (a.fields.embarked < b.fields.embarked) {
+    return -1
+  } else if (a.fields.embarked > b.fields.embarked) {
+    return 1
+  }
+  return 0
+})
+
+data.sort((a, b) => {
+  if (a.fields.sex == 'female'){
+    return 1
+  }
+  return -1
+})
+
+data.sort((a, b) => {
+  if (a.fields.survived == 'Yes') {
+    return -1
+  }
+  return 1
+  // return a number < 1 
+})
+
 // Let's loop over each passenger and set some styles 
 passengers.forEach((p, i) => {
   p.style.width = '15px'
   p.style.height = '15px'
-  p.style.backgroundColor = '#000000'
   p.style.borderRadius = data[i].fields.sex == 'female' ? '50%' : '0'
+  p.style.opacity = data[i].fields.survived == 'Yes' ? '1.0' : '0.5'
+  const portColor = { S: 'tomato', C: 'cornflowerblue', Q: 'orange', undefined: 'black'}
+  p.style.backgroundColor = portColor[data[i].fields.embarked]
 })
 
 // Challenges - 
