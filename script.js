@@ -18,15 +18,21 @@ const embarkedKeys = Object.keys(embarkedCounts)
 embarkedKeys.forEach((e) => {
   const el = document.createElement('div')
   titanicEmbarked.appendChild(el)
-  el.style.width = '30px'
-  el.style.height = `${embarkedCounts[e]}px`
+  el.style.height = '30px'
+  const count = embarkedCounts[e]
+  const percent = count / data.length * 100
+  el.style.width = `${percent}%`
   el.style.backgroundColor = portColor[e]
   el.style.margin = '1px'
 })
 
 titanicEmbarked.style.display = 'flex'
-titanicEmbarked.style.alignItems = 'center'
-
+titanicEmbarked.style.flexDirection = 'column'
+titanicEmbarked.style.alignItems = 'flex-start'
+titanicEmbarked.style.border = '1px solid'
+// titanicEmbarked.style.margin = '1px'
+titanicEmbarked.style.width = '300px'
+titanicEmbarked.style.height = '100px'
 
 
 
